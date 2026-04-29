@@ -1,0 +1,42 @@
+# Unreal Engine generated/build artifacts
+Binaries/
+Build/
+Builds/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Visual Studio / Rider / VSCode
+.vs/
+.vscode/
+.idea/
+.vsconfig
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.user
+*.userosscache
+*.userprefs
+
+# Compiled
+*.obj
+*.pdb
+*.exe
+*.dll
+*.lib
+*.so
+*.app
+*.ipa
+*.apk
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# OMC / 기타 도구 상태 파일
+.omc/
