@@ -8,6 +8,8 @@ class UCameraComponent;
 class UMotionControllerComponent;
 class USceneComponent;
 class UOculusXRHandComponent;
+class URuneDrawingComponent;
+class URuneSpellComponent;
 
 /**
  * Quest 3 Hand Tracking Demo Pawn.
@@ -20,7 +22,7 @@ class UOculusXRHandComponent;
  * 모든 컴포넌트는 C++ 생성자에서 만들어지며 블루프린트 자산이 필요 없음.
  * 그냥 Place Actors 패널이나 GameMode 의 DefaultPawnClass 로 지정해서 사용.
  */
-UCLASS()
+UCLASS(Blueprintable, BlueprintType)
 class HANDTRACKINGDEMO_API AHandPawn : public APawn
 {
 	GENERATED_BODY()
@@ -49,4 +51,13 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "VR|HandTracking")
 	UOculusXRHandComponent* RightHand;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "VR|Rune")
+	URuneDrawingComponent* LeftRuneDrawing;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "VR|Rune")
+	URuneDrawingComponent* RightRuneDrawing;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "VR|Rune")
+	URuneSpellComponent* SpellComponent;
 };

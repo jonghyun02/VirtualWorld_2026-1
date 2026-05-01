@@ -5,6 +5,9 @@
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "OculusXRHandComponent.h"
 #include "OculusXRInputFunctionLibrary.h"
+#include "RuneDrawingComponent.h"
+#include "RuneSpellComponent.h"
+#include "RuneTypes.h"
 
 AHandPawn::AHandPawn()
 {
@@ -45,6 +48,21 @@ AHandPawn::AHandPawn()
 	RightHand->SkeletonType       = EOculusXRHandType::HandRight;
 	RightHand->MeshType           = EOculusXRHandType::HandRight;
 	RightHand->ConfidenceBehavior = EOculusXRConfidenceBehavior::None;
+
+	// 룬 드로잉 컴포넌트 — 양손 1개씩.
+	// HandRef는 BeginPlay에서 SetupHandRefIfNeeded()가 자동으로 매칭하지만,
+	// C++에서 직접 부착할 때 컴포넌트 검색 비용을 아끼고 명확하게 하기 위해 명시 바인딩.
+	LeftRuneDrawing = CreateDefaultSubobject<URuneDrawingComponent>(TEXT("LeftRuneDrawing"));
+	LeftRuneDrawing->HandSide = EHandSide::Left;
+	LeftRuneDrawing->HandRef = LeftHand;
+
+	RightRuneDrawing = CreateDefaultSubobject<URuneDrawingComponent>(TEXT("RightRuneDrawing"));
+	RightRuneDrawing->HandSide = EHandSide::Right;
+	RightRuneDrawing->HandRef = RightHand;
+
+	// 마법 디스패처 — Pawn에 1개. BeginPlay에서 위 두 드로잉 컴포넌트의
+	// OnShapeRecognized 델리게이트에 자동 바인드됨.
+	SpellComponent = CreateDefaultSubobject<URuneSpellComponent>(TEXT("SpellComponent"));
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 }

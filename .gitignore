@@ -5,6 +5,15 @@ Builds/
 DerivedDataCache/
 Intermediate/
 Saved/
+Backup/
+
+# UE upgrade/migration artifacts
+UpgradeLog*.htm
+UpgradeLog*.XML
+
+# UAT/UBT logs (한 빌드당 수십~수백MB 찍힘)
+BuildLog*.txt
+*.log
 
 # Visual Studio / Rider / VSCode
 .vs/
@@ -21,7 +30,10 @@ Saved/
 *.userosscache
 *.userprefs
 
-# Compiled
+# 사용자별 에디터 설정 (다른 사용자한테 영향 줄 가능성)
+Config/DefaultEditorPerProjectUserSettings.ini
+
+# Compiled binaries
 *.obj
 *.pdb
 *.exe
